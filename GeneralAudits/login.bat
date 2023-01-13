@@ -15,7 +15,7 @@ echo "\n\@fsipleiria 2023, (o joaoV teve aq)"
 goto :end
 ::noarg
 :noarg
-wevtutil qe Security "/q:*[System [(EventID=4648)]]" /rd:true
+wevtutil qe Security "/q:*[System [(EventID=4648)]]" %reversed% %format%
 
 :end
 echo "\n\n\t --- <Fim do audit> ---"

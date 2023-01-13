@@ -17,6 +17,6 @@ goto :end
 :noarg
 :: wevtutil qe System /rd:true with the following list of events 41 1074 1076 6005 6006 6008 6009
 
-wevtutil qe System "/q:*[System [(EventID=6005)]]" /rd:true
+wevtutil qe System "/q:*[System [(EventID=6005)]]" %reversed% %format%
 :end
 echo "\n\n\t --- <Fim do audit> ---"
