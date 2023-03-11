@@ -11,8 +11,8 @@ set "Choco_download= C:\Users\%USERNAME%\AppData\Local\Temp\chocolatey\"
 ::Set Path to Logs directory
 set "Log_Folder= C:\Users\%USERNAME%\Documents\Logs\"
 ::Log file name
-if "%TIME:~2,1%" == ":" (
-    set "FILENAME=log_download_0%time:~1,1%-%time:~3,2%-%time:~6,2%_%date:~-10,2%-%date:~-7,2%-%date:~-4,4%.txt"
+if "%TIME:~1,1%" == ":" (
+    set "FILENAME=log_download_0%time:~0,1%-%time:~3,2%-%time:~6,2%_%date:~-10,2%-%date:~-7,2%-%date:~-4,4%.txt"
 ) else (
     set "FILENAME=log_download_%time:~0,2%-%time:~3,2%-%time:~6,2%_%date:~-10,2%-%date:~-7,2%-%date:~-4,4%.txt"
 )
