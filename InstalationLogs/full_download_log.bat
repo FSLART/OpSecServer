@@ -25,7 +25,7 @@ if not exist %Log_Folder% (
 ::Push to first directory and copy to log
 echo -_-_-_-_-_-_- START OF DOWNLOAD FOLDER -_-_-_-_-_-_- > %Log_Folder%%FILENAME%
 pushd %Win_download%
-dir *.exe /s 1>> %Log_Folder%%FILENAME% 2>> %Log_Folder%%FILENAME%
+dir *.exe /s 1>> %Log_Folder%%FILENAME%
 ::End first copy
 
 echo -_-_-_-_-_-_- END OF DOWNLOAD FOLDER -_-_-_-_-_-_- >> %Log_Folder%%FILENAME%
@@ -35,7 +35,7 @@ echo -_-_-_-_-_-_- START OF CHOCO DOWNLOAD FOLDER -_-_-_-_-_-_- >> %Log_Folder%%
 ::Start second copy
 ::Push to second directory and copy to log
 pushd %Choco_download%
-dir *.exe /s 1>> %Log_Folder%%FILENAME% 2>> %Log_Folder%%FILENAME%
+dir *.exe /s 1>> %Log_Folder%%FILENAME%
 echo -_-_-_-_-_-_- END OF CHOCO DOWNLOAD FOLDER -_-_-_-_-_-_- >> %Log_Folder%%FILENAME%
 ::End second copy
 
