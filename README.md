@@ -1,2 +1,2 @@
 # OpSecServer
-Comandos, Alias e documentaçao para auxiliar o bom uso do servidor
+Comandos e documentaçao para auxiliar o bom uso do servidor

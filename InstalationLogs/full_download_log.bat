@@ -4,7 +4,7 @@ set "CALLFOLDER=%cd%"
 ::DONT TOUCH END
 
 ::Set Path directorys to windows download folder
-set "Win_download= C:\Users\%USERNAME%\Download\"
+set "Win_download= C:\Users\%USERNAME%\Downloads\"
 :: and choco download folder
 set "Choco_download= C:\Users\%USERNAME%\AppData\Local\Temp\chocolatey\"
 
@@ -12,9 +12,9 @@ set "Choco_download= C:\Users\%USERNAME%\AppData\Local\Temp\chocolatey\"
 set "Log_Folder= C:\Users\%USERNAME%\Documents\Logs\"
 ::Log file name
 if "%TIME:~1,1%" == ":" (
-    set "FILENAME=log_download_0%time:~0,1%-%time:~3,2%-%time:~6,2%_%date:~-10,2%-%date:~-7,2%-%date:~-4,4%.txt"
+    set "FILENAME=log_download_0%time:~0,1%-%time:~3,2%-%time:~6,2%_%date:~-10,2%-%date:~-7,2%-%date:~-4,4%.log"
 ) else (
-    set "FILENAME=log_download_%time:~0,2%-%time:~3,2%-%time:~6,2%_%date:~-10,2%-%date:~-7,2%-%date:~-4,4%.txt"
+    set "FILENAME=log_download_%time:~0,2%-%time:~3,2%-%time:~6,2%_%date:~-10,2%-%date:~-7,2%-%date:~-4,4%.log"
 )
 
 if not exist %Log_Folder% (
@@ -24,8 +24,8 @@ if not exist %Log_Folder% (
 ::Start first copy
 ::Push to first directory and copy to log
 echo -_-_-_-_-_-_- START OF DOWNLOAD FOLDER -_-_-_-_-_-_- > %Log_Folder%%FILENAME%
-pushd %Win_download%
-dir *.exe /s 1>> %Log_Folder%%FILENAME%
+cd %Win_download%
+dir *.exe /s >> %Log_Folder%%FILENAME% 2>nul
 ::End first copy
 
 echo -_-_-_-_-_-_- END OF DOWNLOAD FOLDER -_-_-_-_-_-_- >> %Log_Folder%%FILENAME%
@@ -34,10 +34,10 @@ echo -_-_-_-_-_-_- START OF CHOCO DOWNLOAD FOLDER -_-_-_-_-_-_- >> %Log_Folder%%
 
 ::Start second copy
 ::Push to second directory and copy to log
-pushd %Choco_download%
-dir *.exe /s 1>> %Log_Folder%%FILENAME%
+cd %Choco_download%
+dir *.exe /s >> %Log_Folder%%FILENAME% 2>nul
 echo -_-_-_-_-_-_- END OF CHOCO DOWNLOAD FOLDER -_-_-_-_-_-_- >> %Log_Folder%%FILENAME%
 ::End second copy
 
-pushd %CALLFOLDER%
+cd %CALLFOLDER%
 @echo on
