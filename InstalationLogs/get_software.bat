@@ -1,6 +1,6 @@
 @echo off
 ::DONT TOUCH (batch call directory)
-set "CALLFOLDER=%cd%"
+pushd %cd%
 ::DONT TOUCH END
 
 ::Temporary file in user directory. Don't change if you don't know what this is. 
@@ -20,5 +20,20 @@ echo Name ^| version >> %list_file%
 choco list --Local -r >> %list_file%
 echo _-_-_-_-_-_-_ INSTALLED PACKAGES END _-_-_-_-_-_-_ >> %list_file%
 
-cd %CALLFOLDER%
+echo. && echo Software list created in %list_file% && echo.
+
+:promt
+set /p "userInput=Open the log in terminal (y/n):"
+if /i "%userInput%"=="Y" goto yes
+if /i "%userInput%"=="y" goto yes
+if /i "%userInput%"=="N" goto end
+if /i "%userInput%"=="n" goto end
+echo Unknow character
+goto promt
+
+:yes
+more %list_file%
+
+:end
+popd
 @echo on

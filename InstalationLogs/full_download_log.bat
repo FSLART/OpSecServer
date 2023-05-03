@@ -1,6 +1,6 @@
 @echo off
 ::DONT TOUCH (batch call directory)
-set "CALLFOLDER=%cd%"
+pushd %cd%
 ::DONT TOUCH END
 
 ::Set Path directorys to windows download folder
@@ -39,5 +39,20 @@ dir *.exe /s >> %Log_Folder%%FILENAME% 2>nul
 echo -_-_-_-_-_-_- END OF CHOCO DOWNLOAD FOLDER -_-_-_-_-_-_- >> %Log_Folder%%FILENAME%
 ::End second copy
 
-cd %CALLFOLDER%
+echo. && echo Downloads log file created and added to %Log_Folder% && echo.
+
+:promt
+set /p "userInput=Open the log in terminal (y/n):"
+if /i "%userInput%"=="Y" goto yes
+if /i "%userInput%"=="y" goto yes
+if /i "%userInput%"=="N" goto end
+if /i "%userInput%"=="n" goto end
+echo Unknow character
+goto promt
+
+:yes
+more %Log_Folder%%FILENAME%
+
+:end
+popd
 @echo on
